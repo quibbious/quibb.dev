@@ -22,10 +22,10 @@ const afterimagePass = new AfterimagePass(0.9);
 composer.addPass(afterimagePass);
 
 
-const renderPixelatedPass = new RenderPixelatedPass(0.5, scene, camera);
+//const renderPixelatedPass = new RenderPixelatedPass(0.5, scene, camera);
 
 
-composer.addPass(renderPixelatedPass);
+//composer.addPass(renderPixelatedPass);
 
 
 renderer.setSize(window.innerWidth, window.innerHeight);
