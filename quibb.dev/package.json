@@ -1,0 +1,16 @@
+{
+  "name": "three-w-gui",
+  "version": "1.0.0",
+  "description": "experimentation of Three.js with dat.gui to make visualizations",
+  "license": "MIT",
+  "author": "quibb",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "dev": "npx vite  src/index.html --host"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.9",
+    "three": "^0.182.0"
+  }
+}
