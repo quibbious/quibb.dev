@@ -31,7 +31,7 @@ composer.addPass(afterimagePass);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 //                                                    FF00AA
-const directionalLight = new THREE.DirectionalLight(0x00FFAA, 1)
+const directionalLight = new THREE.DirectionalLight(0xFF00AA, 1)
 directionalLight.position.y = 10
 directionalLight.position.x = 0
 directionalLight.position.z = -20
