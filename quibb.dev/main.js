@@ -1,17 +1,9 @@
 import * as THREE from 'three';
-
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelatedPass.js';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { AfterimagePass } from 'three/addons/postprocessing/AfterimagePass.js';
-
-
 const scene = new THREE.Scene()
 const loader = new GLTFLoader()
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
-const composer = new EffectComposer(renderer);
+
 //const controls = new OrbitControls(camera, renderer.domElement);
 const resolution = new THREE.Vector2(window.innerWidth, window.innerHeight);
 
@@ -47,7 +39,7 @@ camera.position.set(-0.5, 8, 25);
 
 
 function animate() {
-    composer.render()
+    renderer.render()
     
     cube.rotation.x = Math.sin(45 * 1000 / 60)
 }
