@@ -6,7 +6,8 @@ import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 let camera, controls, scene, renderer, effect;
 
 let cube, plane;
-
+var xpos = 0
+var ypos = 0 
 const start = Date.now();
 
 camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
@@ -61,8 +62,8 @@ effect.setSize( window.innerWidth, window.innerHeight );
 
 document.addEventListener('mousemove', (event) => {
   console.log(`X: ${event.clientX}, Y: ${event.clientY}`);
-  var xpos = event.clientX;
-  var ypos = event.clientY;
+  xpos = event.clientX;
+  ypos = event.clientY;
 });
 
 
