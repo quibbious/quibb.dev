@@ -73,8 +73,8 @@ cube.rotation.z = timer * 0.0002;
     
 
 console.log(' X:', mouse.x, ' Y:', mouse.y,'cubeX: ', cube.position.x, "cubeY: ", cube.position.y);    
-cube.position.x = mX-window.innerWidth;
-cube.position.y = mY+window.innerHeight;
+cube.position.x = mouse.x-window.innerWidth;
+cube.position.y = mouse.y+window.innerHeight;
 
 controls.update();
 
