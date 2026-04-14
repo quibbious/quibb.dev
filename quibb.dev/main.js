@@ -32,7 +32,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 
 var big_charset = ' !@#$%^&*()_+-=~`|[]{};"<>?\\'
-var numbers = '1234567890'
+var numbers = ' 1234567890.'
 
 effect = new AsciiEffect( renderer, numbers, { invert: false } );
 effect.setSize( window.innerWidth, window.innerHeight );
