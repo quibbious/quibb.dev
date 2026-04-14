@@ -54,8 +54,6 @@ controls = new TrackballControls( camera, effect.domElement );
 
 window.addEventListener( 'resize', onWindowResize );
 
-}
-
 function onWindowResize() {
 
 camera.aspect = window.innerWidth / window.innerHeight;
@@ -63,7 +61,6 @@ camera.updateProjectionMatrix();
 
 renderer.setSize( window.innerWidth, window.innerHeight );
 effect.setSize( window.innerWidth, window.innerHeight );
-
 }
 
 //
