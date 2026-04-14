@@ -60,17 +60,14 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 effect.setSize( window.innerWidth, window.innerHeight );
 }
 
-function onMouseMove(event) {
+var mX = 0;
+var mY = 0;
 
-    // Update the mouse variable
-    event.preventDefault();
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
-    // Make the sphere follow the mouse
-    mouseMesh.position.set(event.clientX, event.clientY, 0);
-};
-
+document.addEventListener('mousemove', function(event) {
+    console.log(' X:', event.clientX, ' Y:', event.clientY);
+    mX = event.clientX;
+    mY = event.clientY;
+});
 
 function animate() {
 
@@ -78,12 +75,9 @@ const timer = Date.now() - start;
 
 cube.rotation.x = timer * 0.0003;
 cube.rotation.z = timer * 0.0002;
-  
-var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
-vector.unproject( camera );
-var dir = vector.sub( camera.position ).normalize();
-var distance = - camera.position.z / dir.z;
-var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
+
+cube.position.x = mX;
+cube.postiton.y = mY;
   
 controls.update();
 
