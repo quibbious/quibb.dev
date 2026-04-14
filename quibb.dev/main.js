@@ -31,8 +31,8 @@ renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 
-big_charset = ' !@#$%^&*()_+-=~`|[]{};"<>?\\'
-spooky_charset = " iseeyou"
+var big_charset = ' !@#$%^&*()_+-=~`|[]{};"<>?\\'
+var spooky_charset = " iseeyou"
 
 effect = new AsciiEffect( renderer, spooky_charset, { invert: true } );
 effect.setSize( window.innerWidth, window.innerHeight );
