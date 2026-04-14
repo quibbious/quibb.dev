@@ -59,6 +59,14 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 effect.setSize( window.innerWidth, window.innerHeight );
 }
 
+document.addEventListener('mousemove', (event) => {
+  console.log(`X: ${event.clientX}, Y: ${event.clientY}`);
+  var xpos = event.clientX;
+  var ypos = event.clientY;
+});
+
+
+
 //
 
 function animate() {
