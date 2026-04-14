@@ -29,7 +29,7 @@ scene.add(cube);
 
 // Camera position
 camera.position.set(-0.5, 8, 25);
-
+camera.lookAt(cube);
 // Handle window resize
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -37,16 +37,9 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// Animation clock
-const clock = new THREE.Clock();
 
 function animate() {
-    const t = clock.getElapsedTime();
-
-    // Smooth animation
-    cube.rotation.x = Math.sin(t);
-    cube.rotation.y = t;
-
+    cube.rotation.x += 0.01;
     // controls.update(); 
     asciiEffect.render(scene, camera);
 }
