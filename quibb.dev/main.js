@@ -5,7 +5,7 @@ import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
 let camera, controls, scene, renderer, effect;
 
-let sphere, plane;
+let cube, plane;
 
 const start = Date.now();
 
@@ -24,8 +24,8 @@ const pointLight2 = new THREE.PointLight( 0xffffff, 1, 0, 0 );
 pointLight2.position.set( - 500, - 500, - 500 );
 scene.add( pointLight2 );
 
-sphere = new THREE.Mesh( new THREE.SphereGeometry( 200, 20, 10 ), new THREE.MeshPhongMaterial( { flatShading: true } ) );
-scene.add( sphere );
+cube = new THREE.Mesh( new THREE.BoxGeometry(2,2,2), new THREE.MeshPhongMaterial( { flatShading: true } ) );
+scene.add( cube );
 
 // Plane
 
@@ -69,9 +69,9 @@ function animate() {
 
 const timer = Date.now() - start;
 
-sphere.position.y = Math.abs( Math.sin( timer * 0.002 ) ) * 150;
-sphere.rotation.x = timer * 0.0003;
-sphere.rotation.z = timer * 0.0002;
+cube.position.y = Math.abs( Math.sin( timer * 0.002 ) ) * 150;
+cube.rotation.x = timer * 0.0003;
+cube.rotation.z = timer * 0.0002;
 
 controls.update();
 
