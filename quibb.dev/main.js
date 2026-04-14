@@ -40,14 +40,12 @@ effect.setSize( window.innerWidth, window.innerHeight );
 effect.domElement.style.color = 'red';
 effect.domElement.style.backgroundColor = 'black';
 
-// Special case: append effect.domElement, instead of renderer.domElement.
-// AsciiEffect creates a custom domElement (a div container) where the ASCII elements are placed.
-
 document.body.appendChild( effect.domElement );
 
 controls = new TrackballControls( camera, effect.domElement );
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
 
-//
 
 window.addEventListener( 'resize', onWindowResize );
 
@@ -63,11 +61,16 @@ effect.setSize( window.innerWidth, window.innerHeight );
 var mX = 0;
 var mY = 0;
 
-document.addEventListener('mousemove', function(event) {
-   
-    mX = event.clientX;
-    mY = event.clientY;
-});
+function onMouseMove(event) {
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(scene.children);
+  if (intersects.length > 0) {
+    console.log("3D Position:", intersects[0].point);
+  }
+}
 
 function animate() {
 
@@ -76,8 +79,8 @@ const timer = Date.now() - start;
 cube.rotation.x = timer * 0.0003;
 cube.rotation.z = timer * 0.0002;
     
-console.log(' X:', mX, ' Y:', mY);
-console.log('cubeX: ', cube.position.x, "cubeY: ", cube.position.y);    
+
+console.log(' X:', mouse.x, ' Y:', mouse.y,'cubeX: ', cube.position.x, "cubeY: ", cube.position.y);    
 cube.position.x = mX/2;
 cube.position.y = -mY;
 
