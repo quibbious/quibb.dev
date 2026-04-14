@@ -24,7 +24,7 @@ const pointLight2 = new THREE.PointLight( 0xffffff, 1, 0, 0 );
 pointLight2.position.set( - 500, - 500, - 500 );
 scene.add( pointLight2 );
 
-cube = new THREE.Mesh( new THREE.BoxGeometry(20,20,20), new THREE.MeshPhongMaterial( { flatShading: true } ) );
+cube = new THREE.Mesh( new THREE.BoxGeometry(100,100,100), new THREE.MeshPhongMaterial( { flatShading: true } ) );
 scene.add( cube );
 
 renderer = new THREE.WebGLRenderer();
