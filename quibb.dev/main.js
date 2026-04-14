@@ -36,7 +36,7 @@ var numbers = ' 1234567890.'
 
 effect = new AsciiEffect( renderer, numbers, { invert: false } );
 effect.setSize( window.innerWidth, window.innerHeight );
-effect.domElement.style.color = 'white';
+effect.domElement.style.color = 'red';
 effect.domElement.style.backgroundColor = 'black';
 
 // Special case: append effect.domElement, instead of renderer.domElement.
