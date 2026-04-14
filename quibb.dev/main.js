@@ -24,15 +24,8 @@ const pointLight2 = new THREE.PointLight( 0xffffff, 1, 0, 0 );
 pointLight2.position.set( - 500, - 500, - 500 );
 scene.add( pointLight2 );
 
-cube = new THREE.Mesh( new THREE.BoxGeometry(2,2,2), new THREE.MeshPhongMaterial( { flatShading: true } ) );
+cube = new THREE.Mesh( new THREE.BoxGeometry(20,20,20), new THREE.MeshPhongMaterial( { flatShading: true } ) );
 scene.add( cube );
-
-// Plane
-
-plane = new THREE.Mesh( new THREE.PlaneGeometry( 400, 400 ), new THREE.MeshBasicMaterial( { color: 0xe0e0e0 } ) );
-plane.position.y = - 200;
-plane.rotation.x = - Math.PI / 2;
-scene.add( plane );
 
 renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
