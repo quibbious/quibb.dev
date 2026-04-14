@@ -31,7 +31,7 @@ renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 
-effect = new AsciiEffect( renderer, ' .:-+*=%@#', { invert: true } );
+effect = new AsciiEffect( renderer, ' !@#$%^&*()_+-=~`|[]{};"<>?\\', { invert: true } );
 effect.setSize( window.innerWidth, window.innerHeight );
 effect.domElement.style.color = 'white';
 effect.domElement.style.backgroundColor = 'black';
