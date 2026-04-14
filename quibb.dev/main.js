@@ -58,8 +58,8 @@ effect.setSize( window.innerWidth, window.innerHeight );
 
 
 function onMouseMove(event) {
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  var mX = (event.clientX / window.innerWidth) * 2 - 1;
+  var mY = -(event.clientY / window.innerHeight) * 2 + 1;
 
 }
 
@@ -72,9 +72,9 @@ cube.rotation.x = timer * 0.0003;
 cube.rotation.z = timer * 0.0002;
     
 
-console.log(' X:', mouse.x, ' Y:', mouse.y,'cubeX: ', cube.position.x, "cubeY: ", cube.position.y);    
-cube.position.x = mouse.x-window.innerWidth;
-cube.position.y = mouse.y+window.innerHeight;
+console.log(' X:', mX, ' Y:', mY,'cubeX: ', cube.position.x, "cubeY: ", cube.position.y);    
+cube.position.x = mX-window.innerWidth;
+cube.position.y = mY+window.innerHeight;
 
 controls.update();
 
