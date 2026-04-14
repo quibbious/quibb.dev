@@ -77,7 +77,7 @@ cube.rotation.x = timer * 0.0003;
 cube.rotation.z = timer * 0.0002;
 
 cube.position.x = mX;
-cube.postiton.y = mY;
+cube.position.y = mY;
   
 controls.update();
 
