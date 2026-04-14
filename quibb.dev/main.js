@@ -64,7 +64,7 @@ var mX = 0;
 var mY = 0;
 
 document.addEventListener('mousemove', function(event) {
-    console.log(' X:', event.clientX, ' Y:', event.clientY);
+   
     mX = event.clientX;
     mY = event.clientY;
 });
@@ -75,10 +75,12 @@ const timer = Date.now() - start;
 
 cube.rotation.x = timer * 0.0003;
 cube.rotation.z = timer * 0.0002;
-
+    
+console.log(' X:', event.clientX, ' Y:', event.clientY);
+console.log('cubeX: ', cube.position.x, "cubeY: ", cube.position.y);    
 cube.position.x = mX/2;
 cube.position.y = -mY;
-  
+
 controls.update();
 
 effect.render( scene, camera );
