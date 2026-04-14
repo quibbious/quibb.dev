@@ -15,7 +15,7 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-
+const asciiEffect = new THREE.AsciiEffect(renderer, charSet="-=_+|/{}[]\,.!@#$%^&*()")
 // Lighting
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(0, 10, -20);
@@ -48,7 +48,7 @@ function animate() {
     cube.rotation.y = t;
 
     // controls.update(); 
-    renderer.render(scene, camera);
+    asciiEffect.render(scene, camera);
 }
 
 renderer.setAnimationLoop(animate);
