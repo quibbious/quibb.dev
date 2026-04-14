@@ -1,47 +1,83 @@
 import * as THREE from 'three';
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
 import { AsciiEffect } from 'three/addons/effects/AsciiEffect.js';
+import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
-const scene = new THREE.Scene();
+let camera, controls, scene, renderer, effect;
 
-const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
+let sphere, plane;
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+const start = Date.now();
 
-const asciiEffect = new AsciiEffect(renderer, "-=_+|/{}[]\,.!@#$%^&*()")
-// Lighting
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(0, 10, -20);
-scene.add(directionalLight);
+camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
+camera.position.y = 150;
+camera.position.z = 500;
 
-// Geometry
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshPhongMaterial({ color: 0xdddddd });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+scene = new THREE.Scene();
+scene.background = new THREE.Color( 0, 0, 0 );
 
-// Camera position
-camera.position.set(-0.5, 8, 25);
-camera.lookAt(cube);
-// Handle window resize
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
+const pointLight1 = new THREE.PointLight( 0xffffff, 3, 0, 0 );
+pointLight1.position.set( 500, 500, 500 );
+scene.add( pointLight1 );
 
+const pointLight2 = new THREE.PointLight( 0xffffff, 1, 0, 0 );
+pointLight2.position.set( - 500, - 500, - 500 );
+scene.add( pointLight2 );
 
-function animate() {
-    cube.rotation.x += 0.01;
-    // controls.update(); 
-    asciiEffect.render(scene, camera);
+sphere = new THREE.Mesh( new THREE.SphereGeometry( 200, 20, 10 ), new THREE.MeshPhongMaterial( { flatShading: true } ) );
+scene.add( sphere );
+
+// Plane
+
+plane = new THREE.Mesh( new THREE.PlaneGeometry( 400, 400 ), new THREE.MeshBasicMaterial( { color: 0xe0e0e0 } ) );
+plane.position.y = - 200;
+plane.rotation.x = - Math.PI / 2;
+scene.add( plane );
+
+renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setAnimationLoop( animate );
+
+effect = new AsciiEffect( renderer, ' .:-+*=%@#', { invert: true } );
+effect.setSize( window.innerWidth, window.innerHeight );
+effect.domElement.style.color = 'white';
+effect.domElement.style.backgroundColor = 'black';
+
+// Special case: append effect.domElement, instead of renderer.domElement.
+// AsciiEffect creates a custom domElement (a div container) where the ASCII elements are placed.
+
+document.body.appendChild( effect.domElement );
+
+controls = new TrackballControls( camera, effect.domElement );
+
+//
+
+window.addEventListener( 'resize', onWindowResize );
+
 }
 
-renderer.setAnimationLoop(animate);
+function onWindowResize() {
+
+camera.aspect = window.innerWidth / window.innerHeight;
+camera.updateProjectionMatrix();
+
+renderer.setSize( window.innerWidth, window.innerHeight );
+effect.setSize( window.innerWidth, window.innerHeight );
+
+}
+
+//
+
+function animate() {
+
+const timer = Date.now() - start;
+
+sphere.position.y = Math.abs( Math.sin( timer * 0.002 ) ) * 150;
+sphere.rotation.x = timer * 0.0003;
+sphere.rotation.z = timer * 0.0002;
+
+controls.update();
+
+effect.render( scene, camera );
+
+}
