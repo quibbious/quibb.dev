@@ -73,10 +73,13 @@ function animate() {
 
 const timer = Date.now() - start;
 
-cube.position.y = Math.abs( Math.sin( timer * 0.002 ) ) * 150;
 cube.rotation.x = timer * 0.0003;
 cube.rotation.z = timer * 0.0002;
+  
+cube.position.x += xpos/100;
+cube.position.y += ypos/100;
 
+  
 controls.update();
 
 effect.render( scene, camera );
