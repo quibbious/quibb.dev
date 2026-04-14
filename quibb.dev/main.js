@@ -60,15 +60,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 effect.setSize( window.innerWidth, window.innerHeight );
 }
 
-document.addEventListener('mousemove', (event) => {
-  console.log(`X: ${event.clientX}, Y: ${event.clientY}`);
-  xpos = event.clientX;
-  ypos = event.clientY;
-});
 
-
-
-//
 
 function animate() {
 
@@ -77,8 +69,11 @@ const timer = Date.now() - start;
 cube.rotation.x = timer * 0.0003;
 cube.rotation.z = timer * 0.0002;
   
-if (cube.position.x >= xpos) {cube.position.x--} else if (cube.position.x <=xpos){cube.position.x++}
-if (cube.position.y >= xpos) {cube.position.y--} else if (cube.position.y <=xpos){cube.position.y++}
+var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+vector.unproject( camera );
+var dir = vector.sub( camera.position ).normalize();
+var distance = - camera.position.z / dir.z;
+var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
   
 controls.update();
 
