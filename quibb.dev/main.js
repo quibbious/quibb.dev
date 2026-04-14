@@ -34,7 +34,7 @@ renderer.setAnimationLoop( animate );
 var big_charset = ' !@#$%^&*()_+-=~`|[]{};"<>?\\'
 var numbers = '1234567890'
 
-effect = new AsciiEffect( renderer, numbers, { invert: true } );
+effect = new AsciiEffect( renderer, numbers, { invert: false } );
 effect.setSize( window.innerWidth, window.innerHeight );
 effect.domElement.style.color = 'white';
 effect.domElement.style.backgroundColor = 'black';
