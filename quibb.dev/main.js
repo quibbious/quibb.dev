@@ -76,8 +76,8 @@ const timer = Date.now() - start;
 cube.rotation.x = timer * 0.0003;
 cube.rotation.z = timer * 0.0002;
 
-cube.position.x = mX;
-cube.position.y = mY;
+cube.position.x = mX/window.innerWidth;
+cube.position.y = mY/window.innerHeight;
   
 controls.update();
 
