@@ -32,9 +32,9 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setAnimationLoop( animate );
 
 var big_charset = ' !@#$%^&*()_+-=~`|[]{};"<>?\\'
-var spooky_charset = " iseeyou"
+var numbers = '1234567890'
 
-effect = new AsciiEffect( renderer, spooky_charset, { invert: true } );
+effect = new AsciiEffect( renderer, numbers, { invert: true } );
 effect.setSize( window.innerWidth, window.innerHeight );
 effect.domElement.style.color = 'white';
 effect.domElement.style.backgroundColor = 'black';
