@@ -42,7 +42,7 @@ document.body.appendChild( effect.domElement );
 
 controls = new TrackballControls( camera, effect.domElement );
 const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2(0,0);
+const mouse = new THREE.Vector2();
 
 
 window.addEventListener( 'resize', onWindowResize );
