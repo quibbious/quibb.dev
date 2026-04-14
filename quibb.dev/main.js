@@ -60,6 +60,16 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 effect.setSize( window.innerWidth, window.innerHeight );
 }
 
+function onMouseMove(event) {
+
+    // Update the mouse variable
+    event.preventDefault();
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    // Make the sphere follow the mouse
+    mouseMesh.position.set(event.clientX, event.clientY, 0);
+};
 
 
 function animate() {
