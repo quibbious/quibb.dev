@@ -38,7 +38,6 @@ camera.position.set(-0.5, 8, 25);
 
 
 function animate() {
-    renderer.render()
     
     cube.rotation.x = Math.sin(45 * 1000 / 60)
 }
