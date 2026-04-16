@@ -37,8 +37,8 @@ var binary_charset = " 01"
 
 effect = new AsciiEffect(renderer, " ._-+*|\\quibradnjcobper", { invert: true } );
 effect.setSize( window.innerWidth, window.innerHeight );
-effect.domElement.style.color = "yellow";
-effect.domElement.style.backgroundColor = "skyblue";
+effect.domElement.style.color = "#FFF700";
+effect.domElement.style.backgroundColor = "#5555F0";
 
 document.body.appendChild( effect.domElement );
 
