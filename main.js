@@ -23,7 +23,7 @@ const pointLight2 = new THREE.PointLight( 0xffffff, 1, 0, 0 );
 pointLight2.position.set( - 500, - 500, - 500 );
 scene.add( pointLight2 );
 
-cube = new THREE.Mesh( new THREE.BoxGeometry(100,100,100), new THREE.MeshPhongMaterial( { flatShading: true } ) );
+cube = new THREE.Mesh( new THREE.BoxGeometry(300,50,300), new THREE.MeshPhongMaterial( { flatShading: true } ) );
 scene.add( cube );
 
 renderer = new THREE.WebGLRenderer();
@@ -32,52 +32,44 @@ renderer.setAnimationLoop( animate );
 
 var big_charset = ' !@#$%^&*()_+-=~`|[]{};"<>?\\'
 var numbers = ' 1234567890.'
+var small_charset = " -=_~|\\/."
+var binary_charset = " 01"
 
-effect = new AsciiEffect( renderer, numbers, { invert: false } );
+effect = new AsciiEffect(renderer, " ._-+*|\\quibradnjcobper", { invert: true } );
 effect.setSize( window.innerWidth, window.innerHeight );
-effect.domElement.style.color = 'red';
-effect.domElement.style.backgroundColor = 'black';
+effect.domElement.style.color = "yellow";
+effect.domElement.style.backgroundColor = "skyblue";
 
 document.body.appendChild( effect.domElement );
 
 controls = new TrackballControls( camera, effect.domElement );
-const raycaster = new THREE.Raycaster();
-const mouse = new THREE.Vector2();
 
 
 window.addEventListener( 'resize', onWindowResize );
-
 function onWindowResize() {
 
-camera.aspect = window.innerWidth / window.innerHeight;
-camera.updateProjectionMatrix();
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
 
-renderer.setSize( window.innerWidth, window.innerHeight );
-effect.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    effect.setSize( window.innerWidth, window.innerHeight );
 }
-
-
-function onMouseMove(event) {
-  var mX = (event.clientX / window.innerWidth) * 2 - 1;
-  var mY = -(event.clientY / window.innerHeight) * 2 + 1;
-
-}
-
-
+var i = 0
 function animate() {
 
-const timer = Date.now() - start;
 
-cube.rotation.x = timer * 0.0003;
-cube.rotation.z = timer * 0.0002;
-    
 
-console.log(' X:', mX, ' Y:', mY,'cubeX: ', cube.position.x, "cubeY: ", cube.position.y);    
-cube.position.x = mX-window.innerWidth;
-cube.position.y = mY+window.innerHeight;
+    const timer = Date.now() - start;
 
-controls.update();
+    cube.rotation.x = timer * 0.0003;
+    cube.rotation.z = timer * 0.0002;
 
-effect.render( scene, camera );
+    cube.position.x = 100 * Math.cos(timer * 0.0004);
+    cube.position.y = 100 * Math.cos(timer * 0.0004);
 
+    controls.update();
+
+  
+    effect.render(scene, camera);
 }
+renderer.setAnimationLoop(animate)
